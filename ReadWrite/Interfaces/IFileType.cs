@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReadWrite.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace ReadWrite
 {
     public interface IFileType
     {
-        void Create();
+        IEntity Read();
+        void Create(IEntity entity);
     }
 }

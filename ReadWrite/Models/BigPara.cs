@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ReadWrite.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReadWrite
 {
-    public class BigPara 
+    public class BigPara : IEntity
     {
         public string Title { get; set; }
         public string Spot { get; set; }

@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using ReadWrite.Interfaces;
+using ReadWrite.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,17 +14,22 @@ namespace ReadWrite
 {
     public class JsonTypeBigPara : IFileType
     {
-        
 
-        public void Create()
+        SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
+        public IEntity Read()
         {
-            string conString = "Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true";
-            SqlConnection connection = new SqlConnection(conString);
-
             StreamReader r = new StreamReader("C:/Users/ahmed/Desktop/DataExample/bigpara.json");
             string json = r.ReadToEnd();
             List<BigPara> items = JsonConvert.DeserializeObject<List<BigPara>>(json);
+            AllBigPara allBigPara = new AllBigPara();
+            allBigPara.BigParas = items;
+            return allBigPara;
+        }
 
+        public void Create(IEntity entity)
+        {
+            AllBigPara allBigPara = new AllBigPara();
+            allBigPara = (AllBigPara)entity;
             try
             {
                 if (connection.State == ConnectionState.Closed)
@@ -31,7 +38,7 @@ namespace ReadWrite
                 commandDelete.ExecuteNonQuery();
                 connection.Close();
 
-                foreach (var item in items)
+                foreach (var item in allBigPara.BigParas)
                 {
                     connection.Open();
                     string save = "insert into BigPara(Title, Spot, Description, Link, ImagePath, Category, Orderr) values (@Title,@Spot,@Description,@Link, @ImagePath, @Category, @Orderr)";
@@ -52,6 +59,6 @@ namespace ReadWrite
             {
                 Console.WriteLine("İşlem Sırasında Hata Oluştu. =>> " + ex.Message);
             }
-        }
+        }        
     }
 }

@@ -4,14 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace ReadWrite.Models
 {
-    [XmlRoot("HABERLER")]
-    public class AllNews : IEntity
+    public class AllBigPara : IEntity
     {
-        [XmlElement("HABER")]
-        public List<News> News { get; set; }
+        public List<BigPara> BigParas { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ReadWrite.Models;
+﻿using ReadWrite.Interfaces;
+using ReadWrite.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,15 +14,20 @@ namespace ReadWrite
 {
     public class XmlTypeMahmure : IFileType
     {
-        public void Create()
+        SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
+        public IEntity Read()
         {
-            string conString = "Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true";
-            SqlConnection connection = new SqlConnection(conString);
+            
 
             TextReader reader = new StreamReader("C:/Users/ahmed/Desktop/DataExample/mahmure.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(AllNews));
             AllNews news = (AllNews)serializer.Deserialize(reader);
+            return news;
+        }
 
+        public void Create(IEntity entity)
+        {
+            AllNews news = (AllNews)entity;
             try
             {
                 if (connection.State == ConnectionState.Closed)
@@ -51,5 +57,7 @@ namespace ReadWrite
                 Console.WriteLine("İşlem Sırasında Hata Oluştu. =>> " + ex.Message);
             }
         }
+
+        
     }
 }

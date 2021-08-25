@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReadWrite.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,15 +13,17 @@ namespace ReadWrite
 {
     public class XmlTypeAdvertorial : IFileType
     {
-        public void Create()
+        SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
+        public IEntity Read()
         {
-            string conString = "Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true";
-            SqlConnection connection = new SqlConnection(conString);
-
             TextReader reader = new StreamReader("C:/Users/ahmed/Desktop/DataExample/emlak.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(Advertorial));
             Advertorial adv = (Advertorial)serializer.Deserialize(reader);
-
+            return adv;
+        }
+        public void Create(IEntity entity)
+        {
+            Advertorial adv = (Advertorial)entity;
             try
             {
                 if (connection.State == ConnectionState.Closed)

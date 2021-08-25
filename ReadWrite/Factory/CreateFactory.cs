@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReadWrite
 {
-    public class CreateFactory : IVehicleFactory
+    public class CreateFactory : IFactory
     {
         public IFileType ReadAndCreate(CreateType type)
         {
