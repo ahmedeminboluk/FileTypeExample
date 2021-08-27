@@ -1,12 +1,8 @@
 ﻿using ReadWrite.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace ReadWrite
@@ -35,10 +31,10 @@ namespace ReadWrite
                 foreach (var item in adv.Advs)
                 {
                     connection.Open();
-                    string save = "insert into Advertorial(Text, Link, Location, Price, Title, ImageName, Image, CityId, CityName) values (@Text, @Link, @Location, @Price, @Title, @ImageName, @Image, @CityId, @CityName)";
+                    string save = "insert into Advertorial(Text, DefLink, Location, Price, Title, ImageName, Image, CityId, CityName) values (@Text, @DefLink, @Location, @Price, @Title, @ImageName, @Image, @CityId, @CityName)";
                     SqlCommand command = new SqlCommand(save, connection);
                     command.Parameters.AddWithValue("@Text", item.Text);
-                    command.Parameters.AddWithValue("@Link", item.DefLink);
+                    command.Parameters.AddWithValue("@DefLink", item.DefLink);
                     command.Parameters.AddWithValue("@Location", item.Location);
                     command.Parameters.AddWithValue("@Price", item.Price);
                     command.Parameters.AddWithValue("@Title", item.Title);
