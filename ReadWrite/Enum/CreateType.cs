@@ -4,6 +4,7 @@
     {
         BigPara = 1,
         Mahmure = 2,
-        Advertorial = 3
+        Advertorial = 3,
+        BigParaUrl = 4
     }
 }

@@ -21,6 +21,10 @@ namespace ReadWrite
             IFileType adv = createFactory.ReadAndCreate(CreateType.Advertorial);
             IEntity advList = adv.Read();
             adv.Create(advList);
+
+            IFileType bigParaUrl = createFactory.ReadAndCreate(CreateType.BigParaUrl);
+            IEntity bigParaListUrl = bigParaUrl.Read();
+            bigParaUrl.Create(bigParaListUrl);
         }
     }
 }

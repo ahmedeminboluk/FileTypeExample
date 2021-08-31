@@ -23,6 +23,7 @@ namespace FileTypeExample.Application.Dependency
             services.AddScoped<IAdvRepository, AdvRepository>();
             services.AddScoped<ICacheService, CacheService>();
             services.AddScoped<IDatabaseService, DatabaseService>();
+            services.AddScoped<ISearchService, SearchService>();
 
             services.AddMemoryCache();
 

@@ -1,34 +1,34 @@
 ﻿using FileTypeExample.Application.Dto;
 using FileTypeExample.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FileTypeExample.WebUI.Controllers
 {
-    public class FileTypeController : Controller
+    public class NewsController : Controller
     {
         private readonly ICacheService _cacheService;
+        private readonly ISearchService _searchService;
 
-        public FileTypeController(ICacheService cacheService)
+        public NewsController(ICacheService cacheService, ISearchService searchService)
         {
             _cacheService = cacheService;
+            _searchService = searchService;
         }
 
-        public async Task<IActionResult> BigPara()
+        [HttpPost]
+        public IActionResult Index(string search)
         {
-            var list = await _cacheService.GetAsync<BigParaDto>("bigpara");
-            return View(list);
+            IEnumerable<NewsDto> news = _searchService.GetNewsWithSearchAsync(search);
+            return View(news);
         }
 
         public async Task<IActionResult> News()
         {
             var list = await _cacheService.GetAsync<NewsDto>("news");
-            return View(list);
-        }
-
-        public async Task<IActionResult> Adv()
-        {
-            var list = await _cacheService.GetAsync<AdvDto>("adv");
             return View(list);
         }
     }

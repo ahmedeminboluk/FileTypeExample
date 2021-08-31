@@ -1,4 +1,5 @@
-﻿using ReadWrite.Enum;
+﻿using ReadWrite.Concreate;
+using ReadWrite.Enum;
 using ReadWrite.Interfaces;
 
 namespace ReadWrite
@@ -18,6 +19,9 @@ namespace ReadWrite
                     break;
                 case CreateType.Advertorial:
                     file = new XmlTypeAdvertorial();
+                    break;
+                case CreateType.BigParaUrl:
+                    file = new JsonBigParaUrl();
                     break;
             }
             return file;
