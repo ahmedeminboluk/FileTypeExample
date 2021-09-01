@@ -12,7 +12,17 @@ namespace FileTypeExample.Infrastructure.Repositories
         {
         }
 
-        public IEnumerable<Adv> GetAdvWithSearchAsync(string search)
+        public IEnumerable<Adv> GetAdvOrderAZ()
+        {
+            return _context.Advertorial.OrderBy(x => x.CityName).ToList();
+        }
+
+        public IEnumerable<Adv> GetAdvOrderZA()
+        {
+            return _context.Advertorial.OrderByDescending(x => x.CityName).ToList();
+        }
+
+        public IEnumerable<Adv> GetAdvWithSearch(string search)
         {
             return _context.Advertorial.Where(x => x.CityName.Contains(search));
         }

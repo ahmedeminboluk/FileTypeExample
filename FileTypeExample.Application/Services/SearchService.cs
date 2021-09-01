@@ -25,21 +25,21 @@ namespace FileTypeExample.Application.Services
             _newsRepository = newsRepository;
         }
 
-        public IEnumerable<AdvDto> GetAdvWithSearchAsync(string search)
+        public IEnumerable<AdvDto> GetAdvWithSearch(string search)
         {
-            var items = _advRepository.GetAdvWithSearchAsync(search);
+            var items = _advRepository.GetAdvWithSearch(search);
             return _mapper.Map<List<AdvDto>>(items);
         }
 
-        public IEnumerable<BigParaDto> GetBigParaWithSearchAsync(string search)
+        public IEnumerable<BigParaDto> GetBigParaWithSearch(string search)
         {
-            var items = _bigParaRepository.GetBigParaWithSearchAsync(search);
+            var items = _bigParaRepository.GetBigParaWithSearch(search);
             return _mapper.Map<List<BigParaDto>>(items);
         }
 
-        public IEnumerable<NewsDto> GetNewsWithSearchAsync(string search)
+        public IEnumerable<NewsDto> GetNewsWithSearch(string search)
         {
-            var items = _newsRepository.GetNewsWithSearchAsync(search);
+            var items = _newsRepository.GetNewsWithSearch(search);
             return _mapper.Map<List<NewsDto>>(items);
         }
     }

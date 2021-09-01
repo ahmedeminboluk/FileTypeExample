@@ -15,7 +15,17 @@ namespace FileTypeExample.Infrastructure.Repositories
         {
         }
 
-        public IEnumerable<BigPara> GetBigParaWithSearchAsync(string search)
+        public IEnumerable<BigPara> GetBigParaOrderAZ()
+        {
+            return _context.BigPara.OrderBy(x => x.Title).ToList();
+        }
+
+        public IEnumerable<BigPara> GetBigParaOrderZA()
+        {
+            return _context.BigPara.OrderByDescending(x => x.Title).ToList();
+        }
+
+        public IEnumerable<BigPara> GetBigParaWithSearch(string search)
         {
             return _context.BigPara.Where(x => x.Title.Contains(search) || x.Spot.Contains(search)).ToList();
         }

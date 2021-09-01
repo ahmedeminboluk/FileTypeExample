@@ -8,6 +8,8 @@ namespace FileTypeExample.Domain.Interfaces
 {
     public interface IBigParaRepository : IRepository<BigPara>
     {
-        IEnumerable<BigPara> GetBigParaWithSearchAsync(string search);
+        IEnumerable<BigPara> GetBigParaWithSearch(string search);
+        IEnumerable<BigPara> GetBigParaOrderAZ();
+        IEnumerable<BigPara> GetBigParaOrderZA();
     }
 }

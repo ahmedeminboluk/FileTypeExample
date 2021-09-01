@@ -5,6 +5,8 @@ namespace FileTypeExample.Domain.Interfaces
 {
     public interface IAdvRepository : IRepository<Adv>
     {
-        IEnumerable<Adv> GetAdvWithSearchAsync(string search);
+        IEnumerable<Adv> GetAdvWithSearch(string search);
+        IEnumerable<Adv> GetAdvOrderAZ();
+        IEnumerable<Adv> GetAdvOrderZA();
     }
 }

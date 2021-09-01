@@ -12,7 +12,17 @@ namespace FileTypeExample.Infrastructure.Repositories
         {
         }
 
-        public IEnumerable<News> GetNewsWithSearchAsync(string search)
+        public IEnumerable<News> GetAdvOrderAsc()
+        {
+            return _context.News.OrderBy(x => x.Title.Length).ToList();
+        }
+
+        public IEnumerable<News> GetAdvOrderDesc()
+        {
+            return _context.News.OrderByDescending(x => x.Title.Length).ToList();
+        }
+
+        public IEnumerable<News> GetNewsWithSearch(string search)
         {
             return _context.News.Where(x => x.Title.Contains(search) || x.Text.Contains(search)).ToList();
         }

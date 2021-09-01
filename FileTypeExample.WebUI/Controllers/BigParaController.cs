@@ -12,17 +12,19 @@ namespace FileTypeExample.WebUI.Controllers
     {
         private readonly ICacheService _cacheService;
         private readonly ISearchService _searchService;
+        private readonly IOrderService _orderService;
 
-        public BigParaController(ICacheService cacheService, ISearchService searchService)
+        public BigParaController(ICacheService cacheService, ISearchService searchService, IOrderService orderService)
         {
             _cacheService = cacheService;
             _searchService = searchService;
+            _orderService = orderService;
         }
 
         [HttpPost]
         public IActionResult Index(string search)
         {
-            IEnumerable<BigParaDto> bigPara = _searchService.GetBigParaWithSearchAsync(search);
+            IEnumerable<BigParaDto> bigPara = _searchService.GetBigParaWithSearch(search);
             return View(bigPara);
         }
 
@@ -30,6 +32,12 @@ namespace FileTypeExample.WebUI.Controllers
         {
             var list = await _cacheService.GetAsync<BigParaDto>("bigpara");
             return View(list);
+        }
+        [HttpPost]
+        public IActionResult Order(string order)
+        {
+            IEnumerable<BigParaDto> bigPara = _orderService.GetBigParaOrder(order);
+            return View(bigPara);
         }
     }
 }
