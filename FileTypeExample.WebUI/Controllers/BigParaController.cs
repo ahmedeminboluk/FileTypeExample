@@ -1,6 +1,8 @@
 ﻿using FileTypeExample.Application.Dto;
 using FileTypeExample.Application.Interfaces;
+using FileTypeExample.Infrastructure.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +15,28 @@ namespace FileTypeExample.WebUI.Controllers
         private readonly ICacheService _cacheService;
         private readonly ISearchService _searchService;
         private readonly IOrderService _orderService;
+        private readonly ISPService _spService;
 
-        public BigParaController(ICacheService cacheService, ISearchService searchService, IOrderService orderService)
+        public BigParaController(ICacheService cacheService, ISearchService searchService, IOrderService orderService, ISPService spService)
         {
             _cacheService = cacheService;
             _searchService = searchService;
             _orderService = orderService;
+            _spService = spService;
         }
+
+        public IActionResult OrderSpAz()
+        {
+            var bigPara = _spService.GetBigParaSpAZ();
+            return View(bigPara);
+        }
+
+        public IActionResult OrderSpZa()
+        {
+            var bigPara = _spService.GetBigParaSpZA();
+            return View(bigPara);
+        }
+
 
         [HttpPost]
         public IActionResult Index(string search)
@@ -33,11 +50,17 @@ namespace FileTypeExample.WebUI.Controllers
             var list = await _cacheService.GetAsync<BigParaDto>("bigpara");
             return View(list);
         }
+
         [HttpPost]
         public IActionResult Order(string order)
         {
             IEnumerable<BigParaDto> bigPara = _orderService.GetBigParaOrder(order);
             return View(bigPara);
+        }
+
+        public IActionResult Deneme()
+        {
+            return View();
         }
     }
 }

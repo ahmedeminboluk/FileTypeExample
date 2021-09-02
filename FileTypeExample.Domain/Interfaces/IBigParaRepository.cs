@@ -11,5 +11,7 @@ namespace FileTypeExample.Domain.Interfaces
         IEnumerable<BigPara> GetBigParaWithSearch(string search);
         IEnumerable<BigPara> GetBigParaOrderAZ();
         IEnumerable<BigPara> GetBigParaOrderZA();
+        IEnumerable<BigPara> GetBigParaSpAZ();
+        IEnumerable<BigPara> GetBigParaSpZA();
     }
 }

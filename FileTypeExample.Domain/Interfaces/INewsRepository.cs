@@ -6,7 +6,9 @@ namespace FileTypeExample.Domain.Interfaces
     public interface INewsRepository : IRepository<News>
     {
         IEnumerable<News> GetNewsWithSearch(string search);
-        IEnumerable<News> GetAdvOrderAsc();
-        IEnumerable<News> GetAdvOrderDesc();
+        IEnumerable<News> GetNewsOrderAsc();
+        IEnumerable<News> GetNewsOrderDesc();
+        IEnumerable<News> GetNewsSPAsc();
+        IEnumerable<News> GetNewsSPDesc();
     }
 }

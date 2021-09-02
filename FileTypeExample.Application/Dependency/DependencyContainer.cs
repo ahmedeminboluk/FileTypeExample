@@ -25,6 +25,7 @@ namespace FileTypeExample.Application.Dependency
             services.AddScoped<IDatabaseService, DatabaseService>();
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<ISPService, SPService>();
 
             services.AddMemoryCache();
 

@@ -13,12 +13,26 @@ namespace FileTypeExample.WebUI.Controllers
         private readonly ICacheService _cacheService;
         private readonly ISearchService _searchService;
         private readonly IOrderService _orderService;
+        private readonly ISPService _spService;
 
-        public AdvController(ICacheService cacheService, ISearchService searchService, IOrderService orderService)
+        public AdvController(ICacheService cacheService, ISearchService searchService, IOrderService orderService, ISPService spService)
         {
             _cacheService = cacheService;
             _searchService = searchService;
             _orderService = orderService;
+            _spService = spService;
+        }
+
+        public IActionResult OrderSpAz()
+        {
+            var adv = _spService.GetAdvSpAZ();
+            return View(adv);
+        }
+
+        public IActionResult OrderSpZa()
+        {
+            var adv = _spService.GetAdvSpZA();
+            return View(adv);
         }
 
         [HttpPost]

@@ -50,9 +50,9 @@ namespace FileTypeExample.Application.Services
         {
             IEnumerable<News> news = null;
             if (order == "AZ")
-                news = _newsRepository.GetAdvOrderAsc();
+                news = _newsRepository.GetNewsOrderAsc();
             if (order == "ZA")
-                news = _newsRepository.GetAdvOrderDesc();
+                news = _newsRepository.GetNewsOrderDesc();
             return _mapper.Map<List<NewsDto>>(news);
         }
     }

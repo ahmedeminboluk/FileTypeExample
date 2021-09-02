@@ -1,6 +1,7 @@
 ﻿using FileTypeExample.Domain.Interfaces;
 using FileTypeExample.Domain.Models;
 using FileTypeExample.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,6 +11,16 @@ namespace FileTypeExample.Infrastructure.Repositories
     {
         public AdvRepository(FileTypeExampleDbContext context) : base(context)
         {
+        }
+
+        public IEnumerable<Adv> GetAdvSpAZ()
+        {
+            return _context.Advertorial.FromSqlInterpolated($"EXEC dbo.AdvAsc").ToListAsync().Result;
+        }
+
+        public IEnumerable<Adv> GetAdvSpZA()
+        {
+            return _context.Advertorial.FromSqlInterpolated($"EXEC dbo.AdvDesc").ToListAsync().Result;
         }
 
         public IEnumerable<Adv> GetAdvOrderAZ()

@@ -1,6 +1,8 @@
 ﻿using FileTypeExample.Domain.Interfaces;
 using FileTypeExample.Domain.Models;
 using FileTypeExample.Infrastructure.Context;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,16 @@ namespace FileTypeExample.Infrastructure.Repositories
         public IEnumerable<BigPara> GetBigParaOrderZA()
         {
             return _context.BigPara.OrderByDescending(x => x.Title).ToList();
+        }
+
+        public IEnumerable<BigPara> GetBigParaSpAZ()
+        {
+            return _context.BigPara.FromSqlInterpolated($"EXEC dbo.BigParaAsc").ToListAsync().Result;
+        }
+
+        public IEnumerable<BigPara> GetBigParaSpZA()
+        {
+            return _context.BigPara.FromSqlInterpolated($"EXEC dbo.BigParaDesc").ToListAsync().Result;
         }
 
         public IEnumerable<BigPara> GetBigParaWithSearch(string search)

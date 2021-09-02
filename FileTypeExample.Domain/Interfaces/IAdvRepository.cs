@@ -8,5 +8,7 @@ namespace FileTypeExample.Domain.Interfaces
         IEnumerable<Adv> GetAdvWithSearch(string search);
         IEnumerable<Adv> GetAdvOrderAZ();
         IEnumerable<Adv> GetAdvOrderZA();
+        IEnumerable<Adv> GetAdvSpAZ();
+        IEnumerable<Adv> GetAdvSpZA();
     }
 }

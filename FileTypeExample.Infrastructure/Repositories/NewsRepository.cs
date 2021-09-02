@@ -1,6 +1,7 @@
 ﻿using FileTypeExample.Domain.Interfaces;
 using FileTypeExample.Domain.Models;
 using FileTypeExample.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,12 +13,22 @@ namespace FileTypeExample.Infrastructure.Repositories
         {
         }
 
-        public IEnumerable<News> GetAdvOrderAsc()
+        public IEnumerable<News> GetNewsSPAsc()
+        {
+            return _context.News.FromSqlInterpolated($"EXEC dbo.NewsAsc").ToListAsync().Result;
+        }
+
+        public IEnumerable<News> GetNewsSPDesc()
+        {
+            return _context.News.FromSqlInterpolated($"EXEC dbo.NewsDesc").ToListAsync().Result;
+        }
+
+        public IEnumerable<News> GetNewsOrderAsc()
         {
             return _context.News.OrderBy(x => x.Title.Length).ToList();
         }
 
-        public IEnumerable<News> GetAdvOrderDesc()
+        public IEnumerable<News> GetNewsOrderDesc()
         {
             return _context.News.OrderByDescending(x => x.Title.Length).ToList();
         }
