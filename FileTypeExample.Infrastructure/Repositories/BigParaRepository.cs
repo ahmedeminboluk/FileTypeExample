@@ -17,6 +17,11 @@ namespace FileTypeExample.Infrastructure.Repositories
         {
         }
 
+        public IEnumerable<BigPara> GetAll()
+        {
+            return _context.BigPara.ToList();
+        }
+
         public IEnumerable<BigPara> GetBigParaOrderAZ()
         {
             return _context.BigPara.OrderBy(x => x.Title).ToList();

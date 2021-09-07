@@ -2,7 +2,7 @@
 
 namespace ReadWrite
 {
-    public class BigPara : IEntity
+    public class BigPara 
     {
         public string Title { get; set; }
         public string Spot { get; set; }

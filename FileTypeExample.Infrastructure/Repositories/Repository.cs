@@ -24,5 +24,19 @@ namespace FileTypeExample.Infrastructure.Repositories
         {
             return await _entity.ToListAsync();
         }
+
+        public async Task<TEntity> GetByIdAsync(int id)
+        {
+            return await _entity.FindAsync(id);
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            if (entity == null)
+                return null;
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
+            return entity;
+        }
     }
 }

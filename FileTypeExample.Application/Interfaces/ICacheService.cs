@@ -10,5 +10,8 @@ namespace FileTypeExample.Application.Interfaces
     public interface ICacheService
     {
         Task<IEnumerable<T>> GetAsync<T>(string key);
+
+        T Get<T>(string key, TimeSpan cacheTime, Func<T> acquire);
+
     }
 }

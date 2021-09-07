@@ -18,8 +18,4 @@
     <ProjectReference Include="..\FileTypeExample.Application\FileTypeExample.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\FileType\" />
-  </ItemGroup>
-
 </Project>

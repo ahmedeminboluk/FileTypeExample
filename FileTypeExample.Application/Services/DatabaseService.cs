@@ -29,8 +29,8 @@ namespace FileTypeExample.Application.Services
             if (key == "bigpara")
             {
                 List<BigPara> bigPara = await _bigParaRepository.GetAllAsync();
-                List<BigParaDto> big = _mapper.Map<List<BigParaDto>>(bigPara);
-                return (IEnumerable<T>)big;
+                List<BigParaDto> bigDto = _mapper.Map<List<BigParaDto>>(bigPara);
+                return (IEnumerable<T>)bigDto;
             }
             if (key == "news")
             {

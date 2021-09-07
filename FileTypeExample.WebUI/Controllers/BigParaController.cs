@@ -15,14 +15,16 @@ namespace FileTypeExample.WebUI.Controllers
         private readonly ICacheService _cacheService;
         private readonly ISearchService _searchService;
         private readonly IOrderService _orderService;
+        private readonly IBigParaService _bigParaService;
         private readonly ISPService _spService;
 
-        public BigParaController(ICacheService cacheService, ISearchService searchService, IOrderService orderService, ISPService spService)
+        public BigParaController(ICacheService cacheService, ISearchService searchService, IOrderService orderService, ISPService spService, IBigParaService bigParaService)
         {
             _cacheService = cacheService;
             _searchService = searchService;
             _orderService = orderService;
             _spService = spService;
+            _bigParaService = bigParaService;
         }
 
         public IActionResult OrderSpAz()
@@ -45,10 +47,11 @@ namespace FileTypeExample.WebUI.Controllers
             return View(bigPara);
         }
 
-        public async Task<IActionResult> BigPara()
+        public  IActionResult BigPara()
         {
-            var list = await _cacheService.GetAsync<BigParaDto>("bigpara");
-            return View(list);
+            //var list =  _cacheService.GetAsync<BigParaDto>("bigpara");
+            var list2 = _bigParaService.GetAllAsync(5);
+            return View(list2);
         }
 
         [HttpPost]

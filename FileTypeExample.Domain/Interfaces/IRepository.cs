@@ -8,5 +8,7 @@ namespace FileTypeExample.Domain.Interfaces
     public interface IRepository<TEntity> where TEntity : class
     {
         Task<List<TEntity>> GetAllAsync();
+        TEntity Update(TEntity entity);
+        Task<TEntity> GetByIdAsync(int id);
     }
 }
