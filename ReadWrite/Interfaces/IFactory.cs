@@ -4,6 +4,6 @@ namespace ReadWrite.Interfaces
 {
     public interface IFactory
     {
-        IFileType ReadAndCreate(CreateType type);
+        IProcessType ReadAndSave(SaveType type);
     }
 }

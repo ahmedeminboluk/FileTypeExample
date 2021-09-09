@@ -21,13 +21,12 @@ namespace FileTypeExample.Application.Dependency
             services.AddScoped<IBigParaRepository, BigParaRepository>();
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<IAdvRepository, AdvRepository>();
+
             services.AddScoped<ICacheService, CacheService>();
-            services.AddScoped<IDatabaseService, DatabaseService>();
-            services.AddScoped<ISearchService, SearchService>();
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<ISPService, SPService>();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IBigParaService, BigParaService>();
+            services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<IAdvService, AdvService>();
 
             services.AddMemoryCache();
 

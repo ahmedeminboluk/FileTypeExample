@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace ReadWrite
 {
-    public class XmlTypeAdvertorial : IFileType
+    public class XmlTypeAdvertorial : IProcessType
     {
         SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
         public IEntity Read()
@@ -17,7 +17,7 @@ namespace ReadWrite
             Advertorial adv = (Advertorial)serializer.Deserialize(reader);
             return adv;
         }
-        public void Create(IEntity entity)
+        public void Save(IEntity entity)
         {
             Advertorial adv = (Advertorial)entity;
             try

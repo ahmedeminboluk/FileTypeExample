@@ -6,21 +6,21 @@ namespace ReadWrite
 {
     public class CreateFactory : IFactory
     {
-        public IFileType ReadAndCreate(CreateType type)
+        public IProcessType ReadAndSave(SaveType type)
         {
-            IFileType file = null;
+            IProcessType file = null;
             switch (type)
             {
-                case CreateType.BigPara:
+                case SaveType.BigPara:
                     file = new JsonTypeBigPara();
                     break;
-                case CreateType.Mahmure:
+                case SaveType.Mahmure:
                     file = new XmlTypeMahmure();
                     break;
-                case CreateType.Advertorial:
+                case SaveType.Advertorial:
                     file = new XmlTypeAdvertorial();
                     break;
-                case CreateType.BigParaUrl:
+                case SaveType.BigParaUrl:
                     file = new JsonBigParaUrl();
                     break;
             }

@@ -2,9 +2,9 @@
 
 namespace ReadWrite
 {
-    public interface IFileType
+    public interface IProcessType
     {
         IEntity Read();
-        void Create(IEntity entity);
+        void Save(IEntity entity);
     }
 }

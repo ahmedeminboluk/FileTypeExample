@@ -1,57 +1,50 @@
 ﻿using FileTypeExample.Application.Dto;
 using FileTypeExample.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FileTypeExample.WebUI.Controllers
 {
     public class NewsController : Controller
     {
         private readonly ICacheService _cacheService;
-        private readonly ISearchService _searchService;
-        private readonly IOrderService _orderService;
-        private readonly ISPService _spService;
+        private readonly INewsService _newsService;
 
-        public NewsController(ICacheService cacheService, ISearchService searchService, IOrderService orderService, ISPService spService)
+        public NewsController(ICacheService cacheService, INewsService newsService)
         {
             _cacheService = cacheService;
-            _searchService = searchService;
-            _orderService = orderService;
-            _spService = spService;
+            _newsService = newsService;
         }
 
         public IActionResult OrderSpAsc()
         {
-            var news = _spService.GetNewsSpAsc();
+            var news = _newsService.GetNewsSpAsc();
             return View(news);
         }
 
         public IActionResult OrderSpDesc()
         {
-            var news = _spService.GetNewsSpDesc();
+            var news = _newsService.GetNewsSpDesc();
             return View(news);
         }
 
         [HttpPost]
         public IActionResult Index(string search)
         {
-            IEnumerable<NewsDto> news = _searchService.GetNewsWithSearch(search);
+            IEnumerable<NewsDto> news = _newsService.GetNewsWithSearch(search);
             return View(news);
         }
 
-        public async Task<IActionResult> News()
+        public IActionResult News()
         {
-            var list = await _cacheService.GetAsync<NewsDto>("news");
+            var list = _newsService.GetAllCache(5);
             return View(list);
         }
 
         [HttpPost]
         public IActionResult Order(string order)
         {
-            IEnumerable<NewsDto> news = _orderService.GetNewsOrder(order);
+            IEnumerable<NewsDto> news = _newsService.GetNewsOrder(order);
             return View(news);
         }
     }

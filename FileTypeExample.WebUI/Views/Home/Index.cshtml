@@ -4,7 +4,19 @@
 
 <div class="text-center">
     <h3 class="display-4">Tabloları görmek için tıklayınız..</h3>
-    <a href="/BigPara/BigPara" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">BigPara</a>
-    <a href="/News/News" class="btn btn-success btn-lg active" role="button" aria-pressed="true">News</a>
-    <a href="/Adv/Adv" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Advertorial</a>
 </div>
+<div class="text-center">
+    <a href="/BigPara/BigPara" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">BigPara</a><br /><br />
+    @await Component.InvokeAsync("BigPara")
+</div>
+<div class="text-center">
+    <a href="/Adv/Adv" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Advertorial</a><br /><br />
+    @await Component.InvokeAsync("Adv")
+</div>
+<div class="text-center">
+    <a href="/News/News" class="btn btn-success btn-lg active" role="button" aria-pressed="true">News</a><br /><br />
+    @await Component.InvokeAsync("News")
+</div>
+
+
+

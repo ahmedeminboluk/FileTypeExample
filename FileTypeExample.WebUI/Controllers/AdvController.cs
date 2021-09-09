@@ -1,56 +1,49 @@
 ﻿using FileTypeExample.Application.Dto;
 using FileTypeExample.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FileTypeExample.WebUI.Controllers
 {
     public class AdvController : Controller
     {
         private readonly ICacheService _cacheService;
-        private readonly ISearchService _searchService;
-        private readonly IOrderService _orderService;
-        private readonly ISPService _spService;
+        private readonly IAdvService _advService;
 
-        public AdvController(ICacheService cacheService, ISearchService searchService, IOrderService orderService, ISPService spService)
+        public AdvController(ICacheService cacheService, IAdvService advService)
         {
             _cacheService = cacheService;
-            _searchService = searchService;
-            _orderService = orderService;
-            _spService = spService;
+            _advService = advService;
         }
 
         public IActionResult OrderSpAz()
         {
-            var adv = _spService.GetAdvSpAZ();
+            var adv = _advService.GetAdvSpAZ();
             return View(adv);
         }
 
         public IActionResult OrderSpZa()
         {
-            var adv = _spService.GetAdvSpZA();
+            var adv = _advService.GetAdvSpZA();
             return View(adv);
         }
 
         [HttpPost]
         public IActionResult Index(string search)
         {
-            IEnumerable<AdvDto> adv = _searchService.GetAdvWithSearch(search);
+            IEnumerable<AdvDto> adv = _advService.GetAdvWithSearch(search);
             return View(adv);
         }
 
-        public async Task<IActionResult> Adv()
+        public IActionResult Adv()
         {
-            var list = await _cacheService.GetAsync<AdvDto>("adv");
+            var list = _advService.GetAllCache(5);
             return View(list);
         }
         [HttpPost]
         public IActionResult Order(string order)
         {
-            IEnumerable<AdvDto> adv = _orderService.GetAdvOrder(order);
+            IEnumerable<AdvDto> adv = _advService.GetAdvOrder(order);
             return View(adv);
         }
     }

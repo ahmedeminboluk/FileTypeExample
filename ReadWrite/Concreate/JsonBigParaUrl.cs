@@ -9,10 +9,10 @@ using System.Net;
 
 namespace ReadWrite.Concreate
 {
-    public class JsonBigParaUrl : IFileType
+    public class JsonBigParaUrl : IProcessType
     {
         SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
-        public void Create(IEntity entity)
+        public void Save(IEntity entity)
         {
             AllBigPara allBigPara = new AllBigPara();
             allBigPara = (AllBigPara)entity;

@@ -9,7 +9,7 @@ using System.IO;
 
 namespace ReadWrite
 {
-    public class JsonTypeBigPara : IFileType
+    public class JsonTypeBigPara : IProcessType
     {
 
         SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
@@ -23,7 +23,7 @@ namespace ReadWrite
             return allBigPara;
         }
 
-        public void Create(IEntity entity)
+        public void Save(IEntity entity)
         {
             AllBigPara allBigPara = new AllBigPara();
             allBigPara = (AllBigPara)entity;

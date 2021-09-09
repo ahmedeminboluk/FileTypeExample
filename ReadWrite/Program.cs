@@ -10,21 +10,21 @@ namespace ReadWrite
         {
             var createFactory = new CreateFactory();
 
-            IFileType bigPara = createFactory.ReadAndCreate(CreateType.BigPara);
+            IProcessType bigPara = createFactory.ReadAndSave(SaveType.BigPara);
             IEntity bigParaList = bigPara.Read();
-            bigPara.Create(bigParaList);
+            bigPara.Save(bigParaList);
 
-            IFileType mahmure = createFactory.ReadAndCreate(CreateType.Mahmure);
+            IProcessType mahmure = createFactory.ReadAndSave(SaveType.Mahmure);
             IEntity mahmureList = mahmure.Read();
-            mahmure.Create(mahmureList);
+            mahmure.Save(mahmureList);
 
-            IFileType adv = createFactory.ReadAndCreate(CreateType.Advertorial);
+            IProcessType adv = createFactory.ReadAndSave(SaveType.Advertorial);
             IEntity advList = adv.Read();
-            adv.Create(advList);
+            adv.Save(advList);
 
-            IFileType bigParaUrl = createFactory.ReadAndCreate(CreateType.BigParaUrl);
+            IProcessType bigParaUrl = createFactory.ReadAndSave(SaveType.BigParaUrl);
             IEntity bigParaListUrl = bigParaUrl.Read();
-            bigParaUrl.Create(bigParaListUrl);
+            bigParaUrl.Save(bigParaListUrl);
         }
     }
 }

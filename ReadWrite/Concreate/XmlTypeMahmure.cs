@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace ReadWrite
 {
-    public class XmlTypeMahmure : IFileType
+    public class XmlTypeMahmure : IProcessType
     {
         SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
         public IEntity Read()
@@ -21,7 +21,7 @@ namespace ReadWrite
             return news;
         }
 
-        public void Create(IEntity entity)
+        public void Save(IEntity entity)
         {
             AllNews news = (AllNews)entity;
             try

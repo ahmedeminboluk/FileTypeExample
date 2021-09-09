@@ -1,6 +1,6 @@
 ﻿namespace ReadWrite.Enum
 {
-    public enum CreateType
+    public enum SaveType
     {
         BigPara = 1,
         Mahmure = 2,
