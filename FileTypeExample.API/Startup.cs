@@ -1,3 +1,4 @@
+using FileTypeExample.Application.Dependency;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,7 @@ namespace FileTypeExample.API
         {
 
             services.AddControllers();
+            services.RegisterFileType(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FileTypeExample.API", Version = "v1" });

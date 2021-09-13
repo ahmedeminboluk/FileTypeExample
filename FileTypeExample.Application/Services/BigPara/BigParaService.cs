@@ -5,6 +5,7 @@ using FileTypeExample.Domain.Interfaces;
 using FileTypeExample.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FileTypeExample.Application.Services
 {
@@ -19,6 +20,12 @@ namespace FileTypeExample.Application.Services
             _bigParaRepository = bigParaRepository;
             _cacheService = cacheService;
             _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<BigParaDto>> GetAllAsync()
+        {
+            var result = await _bigParaRepository.GetAllAsync();
+            return _mapper.Map<List<BigParaDto>>(result);
         }
 
         public IEnumerable<BigParaDto> GetAll()

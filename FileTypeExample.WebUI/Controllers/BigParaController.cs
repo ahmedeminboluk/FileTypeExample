@@ -2,6 +2,9 @@
 using FileTypeExample.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Net.Http.Json;
 
 namespace FileTypeExample.WebUI.Controllers
 {
@@ -47,7 +50,17 @@ namespace FileTypeExample.WebUI.Controllers
             return View(bigPara);
         }
 
-        public IActionResult Deneme()
+        public async Task<IActionResult> GetAllAPI()
+        {
+            IEnumerable<BigParaDto> bigPara;
+            using (var httpClient = new HttpClient())
+            {
+                bigPara = await httpClient.GetFromJsonAsync<IEnumerable<BigParaDto>>("http://localhost:20778/api/BigPara/AllBigPara");
+            }
+            return View(bigPara);
+        }
+
+        public IActionResult GetAllAjax()
         {
             return View();
         }
