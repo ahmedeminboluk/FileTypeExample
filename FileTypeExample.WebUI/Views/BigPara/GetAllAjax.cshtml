@@ -1,4 +1,5 @@
 ﻿<button class="btn btn-success" id="getBigPara">BigPara Getir</button>
+<button class="btn btn-success" id="getBigPara2">BigPara Getir - Ajax</button>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 <div id="dvItems">
@@ -32,75 +33,78 @@
             </tr>
         </thead>
     </table>
-    </div>
+</div>
 
-    @*<script type="text/javascript">
-            $("#getBigPara").click(function () {
-                debugger;
-                var url = "http://localhost:20778/api/BigPara/AllBigPara";
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        for (var i = 0; i < data.Length; i++) {
-                            document.getElementById("getBigParas").innerHtml +=
-                                "<tr><td>" + data[i].Id + "</td><td>" + data[i].Title + "</td><td>" + data[i].Spot + "</td><td>" + data[i].Description + "</td><td>" + data[i].Link + "</td><td>" + data[i].ImagePath + "</td><td>" + data[i].Category + "</td><td>" + data[i].Orderr + "</td></tr>"
+@*<script type="text/javascript">
+        $("#getBigPara").click(function () {
+            debugger;
+            var url = "http://localhost:20778/api/BigPara/AllBigPara";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    for (var i = 0; i < data.Length; i++) {
+                        document.getElementById("getBigParas").innerHtml +=
+                            "<tr><td>" + data[i].Id + "</td><td>" + data[i].Title + "</td><td>" + data[i].Spot + "</td><td>" + data[i].Description + "</td><td>" + data[i].Link + "</td><td>" + data[i].ImagePath + "</td><td>" + data[i].Category + "</td><td>" + data[i].Orderr + "</td></tr>"
+                    }
+                });
+        });
+    </script>*@
+
+@*<script type="text/javascript">
+        var dataTable;
+        $("#getBigPara").click(function () {
+            $(document).ready(function () {
+                dataTable = $('#DT_Load').DataTable({
+                    "ajax": {
+                        "url": "http://localhost:20778/api/BigPara/AllBigPara",
+                        "type": "GET",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        {
+                            "data": "Id",
+                            "width": "20%"
+                        },
+                        {
+                            "data": "Title",
+                            "width": "20%"
+                        },
+                        {
+                            "data": "Spot",
+                            "width": "20%"
                         }
-                    });
-            });
-        </script>*@
+                    ],
+                    "language": {
+                        "emptyTable": "Not Found Data"
+                    },
+                    "width": "100%"
 
-    @*<script type="text/javascript">
-            var dataTable;
-            $("#getBigPara").click(function () {
-                $(document).ready(function () {
-                    dataTable = $('#DT_Load').DataTable({
-                        "ajax": {
-                            "url": "http://localhost:20778/api/BigPara/AllBigPara",
-                            "type": "GET",
-                            "datatype": "json"
-                        },
-                        "columns": [
-                            {
-                                "data": "Id",
-                                "width": "20%"
-                            },
-                            {
-                                "data": "Title",
-                                "width": "20%"
-                            },
-                            {
-                                "data": "Spot",
-                                "width": "20%"
-                            }
-                        ],
-                        "language": {
-                            "emptyTable": "Not Found Data"
-                        },
-                        "width": "100%"
-
-                    });
                 });
             });
-        </script>*@
+        });
+    </script>*@
 
-    @*$("#getBigPara").click(function () {
-            debugger;
-            $.ajax({
-                type: 'GET',
-                url: 'localhost:20778/api/BigPara/AllBigPara',
-                success: function (bigparas) {
-                    $("#getBigParas").html("");
-                    $.each(bigparas, function (index, value) {
-                        $("#getBigParas").append("<tr><td>" + value.Id + "</td><td>" + value.Title + "</td><td>" + value.Spot + "</td><td>" + value.Description + "</td><td>" + value.Link + "</td><td>" + value.ImagePath + "</td><td>" + value.Category + "</td><td>" + value.Orderr + "</td></tr>");
-                    });
-                }
-            });
-        });*@
+@*$("#getBigPara").click(function () {
+        debugger;
+        $.ajax({
+            type: 'GET',
+            url: 'localhost:20778/api/BigPara/AllBigPara',
+            success: function (bigparas) {
+                $("#getBigParas").html("");
+                $.each(bigparas, function (index, value) {
+                    $("#getBigParas").append("<tr><td>" + value.Id + "</td><td>" + value.Title + "</td><td>" + value.Spot + "</td><td>" + value.Description + "</td><td>" + value.Link + "</td><td>" + value.ImagePath + "</td><td>" + value.Category + "</td><td>" + value.Orderr + "</td></tr>");
+                });
+            }
+        });
+    });*@
 
-    @section Scripts {
-        <script src="~/js/BigPara.js">
+@section Scripts {
+    <script src="~/js/BigPara.js">
 
-        </script>
-    }
+    </script>
+    <script src="~/js/BigParaAjax.js">
+
+    </script>
+}
 
 

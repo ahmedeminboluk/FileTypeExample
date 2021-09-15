@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileTypeExample.Application.Interfaces
+namespace FileTypeExample.Application.Services
 {
     public interface IAdminService
     {
@@ -18,6 +18,7 @@ namespace FileTypeExample.Application.Interfaces
         Task<BigParaDto> GetByIdBigParaAsync(int id);
         Task<NewsDto> GetByIdNewsAsync(int id);
         Task<AdvDto> GetByIdAdvAsync(int id);
+        Task<bool> AddMongoAsync(PushContent content);
 
     }
 }

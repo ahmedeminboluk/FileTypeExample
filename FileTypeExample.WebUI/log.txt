@@ -1,0 +1,49 @@
+2021-09-15 13:14:23.493 +03:00 [INF] User profile is available. Using 'C:\Users\ahmed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-09-15 13:14:24.424 +03:00 [INF] Now listening on: http://localhost:5000
+2021-09-15 13:14:24.431 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-15 13:14:24.432 +03:00 [INF] Hosting environment: Development
+2021-09-15 13:14:24.433 +03:00 [INF] Content root path: G:\Ahmed Son Attıklarım\repos\FileTypeExample\FileTypeExample.WebUI
+2021-09-15 13:14:25.094 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+2021-09-15 13:14:25.196 +03:00 [INF] Executing endpoint 'FileTypeExample.WebUI.Controllers.HomeController.Index (FileTypeExample.WebUI)'
+2021-09-15 13:14:25.298 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FileTypeExample.WebUI.Controllers.HomeController (FileTypeExample.WebUI).
+2021-09-15 13:14:25.307 +03:00 [INF] ilk log
+2021-09-15 13:14:25.396 +03:00 [INF] Executing ViewResult, running view Index.
+2021-09-15 13:14:26.141 +03:00 [INF] Entity Framework Core 5.0.9 initialized 'FileTypeExampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-09-15 13:14:26.946 +03:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Category], [b].[Description], [b].[ImagePath], [b].[Link], [b].[Orderr], [b].[Spot], [b].[Title]
+FROM [BigPara] AS [b]
+2021-09-15 13:14:27.102 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[CityId], [a].[CityName], [a].[DefLink], [a].[Image], [a].[ImageName], [a].[Location], [a].[Price], [a].[Text], [a].[Title]
+FROM [Advertorial] AS [a]
+2021-09-15 13:14:27.154 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [n].[Id], [n].[Date], [n].[Image], [n].[ImageName], [n].[Link], [n].[Text], [n].[Title]
+FROM [News] AS [n]
+2021-09-15 13:14:27.275 +03:00 [INF] Executed ViewResult - view Index executed in 1946.2799ms.
+2021-09-15 13:14:27.278 +03:00 [INF] Executed action FileTypeExample.WebUI.Controllers.HomeController.Index (FileTypeExample.WebUI) in 1976.149ms
+2021-09-15 13:14:27.280 +03:00 [INF] Executed endpoint 'FileTypeExample.WebUI.Controllers.HomeController.Index (FileTypeExample.WebUI)'
+2021-09-15 13:14:27.294 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 200 - text/html;+charset=utf-8 2202.5912ms
+2021-09-15 13:14:54.096 +03:00 [INF] Application is shutting down...
+2021-09-15 13:22:18.216 +03:00 [INF] User profile is available. Using 'C:\Users\ahmed\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-09-15 13:22:18.911 +03:00 [INF] Now listening on: http://localhost:5000
+2021-09-15 13:22:18.912 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-15 13:22:18.913 +03:00 [INF] Hosting environment: Development
+2021-09-15 13:22:18.914 +03:00 [INF] Content root path: G:\Ahmed Son Attıklarım\repos\FileTypeExample\FileTypeExample.WebUI
+2021-09-15 13:22:19.659 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+2021-09-15 13:22:19.737 +03:00 [INF] Executing endpoint 'FileTypeExample.WebUI.Controllers.HomeController.Index (FileTypeExample.WebUI)'
+2021-09-15 13:22:19.816 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FileTypeExample.WebUI.Controllers.HomeController (FileTypeExample.WebUI).
+2021-09-15 13:22:19.821 +03:00 [INF] ilk log
+2021-09-15 13:22:19.898 +03:00 [INF] Executing ViewResult, running view Index.
+2021-09-15 13:22:20.697 +03:00 [INF] Entity Framework Core 5.0.9 initialized 'FileTypeExampleDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-09-15 13:22:21.681 +03:00 [INF] Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [b].[Id], [b].[Category], [b].[Description], [b].[ImagePath], [b].[Link], [b].[Orderr], [b].[Spot], [b].[Title]
+FROM [BigPara] AS [b]
+2021-09-15 13:22:21.842 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[CityId], [a].[CityName], [a].[DefLink], [a].[Image], [a].[ImageName], [a].[Location], [a].[Price], [a].[Text], [a].[Title]
+FROM [Advertorial] AS [a]
+2021-09-15 13:22:21.893 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [n].[Id], [n].[Date], [n].[Image], [n].[ImageName], [n].[Link], [n].[Text], [n].[Title]
+FROM [News] AS [n]
+2021-09-15 13:22:22.015 +03:00 [INF] Executed ViewResult - view Index executed in 2178.8436ms.
+2021-09-15 13:22:22.018 +03:00 [INF] Executed action FileTypeExample.WebUI.Controllers.HomeController.Index (FileTypeExample.WebUI) in 2199.4409ms
+2021-09-15 13:22:22.021 +03:00 [INF] Executed endpoint 'FileTypeExample.WebUI.Controllers.HomeController.Index (FileTypeExample.WebUI)'
+2021-09-15 13:22:22.033 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 200 - text/html;+charset=utf-8 2377.4760ms

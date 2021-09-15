@@ -6,7 +6,9 @@ using FileTypeExample.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FileTypeExample.Application.Services
@@ -17,13 +19,15 @@ namespace FileTypeExample.Application.Services
         private readonly INewsRepository _newsRepository;
         private readonly IAdvRepository _advRepository;
         private readonly IMapper _mapper;
+        private readonly HttpClient _httpClient;
 
-        public AdminService(IBigParaRepository bigParaRepository, INewsRepository newsRepository, IAdvRepository advRepository, IMapper mapper)
+        public AdminService(IBigParaRepository bigParaRepository, INewsRepository newsRepository, IAdvRepository advRepository, IMapper mapper, HttpClient httpClient)
         {
             _bigParaRepository = bigParaRepository;
             _newsRepository = newsRepository;
             _advRepository = advRepository;
             _mapper = mapper;
+            _httpClient = httpClient;
         }
 
         public async Task<BigParaDto> GetByIdBigParaAsync(int id)
@@ -66,7 +70,7 @@ namespace FileTypeExample.Application.Services
         {
             BigPara bigPara = _mapper.Map<BigPara>(entityDto);
             var update = _bigParaRepository.Update(bigPara);
-            if(update != null)
+            if (update != null)
                 return entityDto;
             return null;
         }
@@ -87,6 +91,21 @@ namespace FileTypeExample.Application.Services
             if (update != null)
                 return entityDto;
             return null;
+        }
+
+        public async Task<bool> AddMongoAsync(PushContent content)
+        {
+
+            string json = JsonSerializer.Serialize(content);
+            StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            var uri = new Uri($"{_httpClient.BaseAddress}PushContent/Add");
+
+            var response = await _httpClient.PostAsync(uri, stringContent);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

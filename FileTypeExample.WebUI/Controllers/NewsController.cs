@@ -47,5 +47,10 @@ namespace FileTypeExample.WebUI.Controllers
             IEnumerable<NewsDto> news = _newsService.GetNewsOrder(order);
             return View(news);
         }
+
+        public IActionResult GetAllAjax()
+        {
+            return View();
+        }
     }
 }

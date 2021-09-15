@@ -1,9 +1,14 @@
-﻿using FileTypeExample.Application.Dto;
+﻿using AutoMapper;
+using FileTypeExample.Application.Dto;
 using FileTypeExample.Application.Interfaces;
+using FileTypeExample.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FileTypeExample.WebUI.Controllers
@@ -11,10 +16,15 @@ namespace FileTypeExample.WebUI.Controllers
     public class AdminController : Controller
     {
         private readonly IAdminService _adminService;
+        private readonly IBigParaService _bigParaService;
+        private readonly IMapper _mapper;
 
-        public AdminController(IAdminService adminService)
+        public AdminController(IAdminService adminService, IBigParaService bigParaService, IMapper mapper)
         {
             _adminService = adminService;
+            _bigParaService = bigParaService;
+            _mapper = mapper;
+
         }
 
         public IActionResult Index()
@@ -77,6 +87,13 @@ namespace FileTypeExample.WebUI.Controllers
             AdvDto adv = _adminService.UpdateAdv(entity);
             if (adv != null) return RedirectToAction("Adv");
             return View(entity);
+        }
+
+        public async Task<IActionResult> AddMongo(PushContent content)
+        {
+            var result = await _adminService.AddMongoAsync(content);
+            if (result == true) return RedirectToAction("Index");
+            return RedirectToAction("BigPara");
         }
     }
 }

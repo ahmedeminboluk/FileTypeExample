@@ -20,7 +20,6 @@ function Bigpara() {
 }
 
 $(document).ready(function () {
-    /*loadFunc();*/
 })
 
 

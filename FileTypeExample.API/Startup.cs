@@ -1,3 +1,6 @@
+using FileTypeExample.API.Configuration;
+using FileTypeExample.API.Repository;
+using FileTypeExample.API.Services;
 using FileTypeExample.Application.Dependency;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace FileTypeExample.API
@@ -26,9 +30,20 @@ namespace FileTypeExample.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
 
             services.AddControllers();
             services.RegisterFileType(Configuration);
+
+            services.Configure<MongoDbConfiguration>(Configuration.GetSection("Mongo"));
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<IPushContentService, PushContentService>();
+            services.AddScoped(typeof(IRepository<>), typeof(MongoDbRepositoryBase<>));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FileTypeExample.API", Version = "v1" });
@@ -46,6 +61,12 @@ namespace FileTypeExample.API
             }
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
 
             app.UseAuthorization();
 

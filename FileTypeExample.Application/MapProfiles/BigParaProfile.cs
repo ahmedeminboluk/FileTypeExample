@@ -9,6 +9,7 @@ namespace FileTypeExample.Application.MapProfiles
         public BigParaProfile()
         {
             CreateMap<BigPara, BigParaDto>().ReverseMap();
+            CreateMap<BigPara, PushContent>().ReverseMap();
         }
     }
 }

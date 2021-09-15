@@ -58,6 +58,8 @@
                 </td>
                 <td>
                     <a href="/Admin/BigParaEdit?id=@item.Id" class="btn btn-warning">Düzenle</a>
+                    @Html.ActionLink("Add-Mongo", "AddMongo", "Admin", new { title = item.Title, spot = item.Spot, category = item.Category}, new { @class = "btn btn-success" })
+                    @*<a href="/Admin/BigParaMongo?id=@item.Id" class="btn btn-success">Kaydet (Mongo)</a>*@
                 </td>
             </tr>
         }

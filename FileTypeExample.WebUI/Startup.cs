@@ -1,4 +1,7 @@
+using FileTypeExample.Application.Configurations;
 using FileTypeExample.Application.Dependency;
+using FileTypeExample.Application.Interfaces;
+using FileTypeExample.Application.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +27,10 @@ namespace FileTypeExample.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegisterFileType(Configuration);
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddHttpClient<IAdminService, AdminService>(options => {
+                options.BaseAddress = new Uri(Configuration["Url"]);
+            });
             services.AddControllersWithViews();
         }
 

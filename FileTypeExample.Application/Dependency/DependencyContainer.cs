@@ -1,4 +1,5 @@
-﻿using FileTypeExample.Application.Interfaces;
+﻿using FileTypeExample.Application.Configurations;
+using FileTypeExample.Application.Interfaces;
 using FileTypeExample.Application.Services;
 using FileTypeExample.Domain.Interfaces;
 using FileTypeExample.Infrastructure.Context;
@@ -23,10 +24,11 @@ namespace FileTypeExample.Application.Dependency
             services.AddScoped<IAdvRepository, AdvRepository>();
 
             services.AddScoped<ICacheService, CacheService>();
-            services.AddScoped<IAdminService, AdminService>();
+            
             services.AddScoped<IBigParaService, BigParaService>();
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IAdvService, AdvService>();
+            
 
             services.AddMemoryCache();
 

@@ -11,7 +11,7 @@ namespace ReadWrite.Concreate
 {
     public class JsonBigParaUrl : IProcessType
     {
-        SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
+        SqlConnection connection = new SqlConnection("Server=DESKTOP-PPUQGQU\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
         public void Save(IEntity entity)
         {
             AllBigPara allBigPara = new AllBigPara();

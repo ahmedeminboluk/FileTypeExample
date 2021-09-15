@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +15,21 @@ namespace FileTypeExample.API
     {
         public static void Main(string[] args)
         {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+
+            var log = new LoggerConfiguration()
+                //.WriteTo.MongoDBBson("mongodb://localhost:27017/FileTypeExample")
+                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Debug()
+            //    .WriteTo.MongoDB("mongodb://localhost:27017/FileTypeExample", "logs")
+            //    .ReadFrom.Configuration(configuration)
+            //    .CreateLogger();
+
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -21,6 +38,9 @@ namespace FileTypeExample.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).UseSerilog((context, config) =>
+                {
+                    config.ReadFrom.Configuration(context.Configuration);
                 });
     }
 }

@@ -11,10 +11,12 @@ namespace FileTypeExample.WebUI.Controllers
     public class BigParaController : Controller
     {
         private readonly IBigParaService _bigParaService;
+        private readonly HttpClient _httpClient;
 
-        public BigParaController(IBigParaService bigParaService)
+        public BigParaController(IBigParaService bigParaService, HttpClient httpClient)
         {
             _bigParaService = bigParaService;
+            _httpClient = httpClient;
         }
 
         public IActionResult OrderSpAz()
@@ -53,10 +55,7 @@ namespace FileTypeExample.WebUI.Controllers
         public async Task<IActionResult> GetAllAPI()
         {
             IEnumerable<BigParaDto> bigPara;
-            using (var httpClient = new HttpClient())
-            {
-                bigPara = await httpClient.GetFromJsonAsync<IEnumerable<BigParaDto>>("http://localhost:20778/api/BigPara/AllBigPara");
-            }
+            bigPara = await _httpClient.GetFromJsonAsync<IEnumerable<BigParaDto>>($"{_httpClient.BaseAddress}BigPara/GetAll");
             return View(bigPara);
         }
 

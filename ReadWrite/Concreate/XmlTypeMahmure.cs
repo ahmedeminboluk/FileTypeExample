@@ -10,7 +10,7 @@ namespace ReadWrite
 {
     public class XmlTypeMahmure : IProcessType
     {
-        SqlConnection connection = new SqlConnection("Server=DESKTOP-JB75S8O\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
+        SqlConnection connection = new SqlConnection("Server=DESKTOP-PPUQGQU\\SQLEXPRESS;Database=DataExample;Trusted_Connection=True;MultipleActiveResultSets=true");
         public IEntity Read()
         {
             

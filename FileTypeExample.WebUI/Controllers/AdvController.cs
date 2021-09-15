@@ -46,5 +46,10 @@ namespace FileTypeExample.WebUI.Controllers
             IEnumerable<AdvDto> adv = _advService.GetAdvOrder(order);
             return View(adv);
         }
+
+        public IActionResult GetAllAjax()
+        {
+            return View();
+        }
     }
 }

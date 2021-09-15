@@ -16,6 +16,7 @@ namespace FileTypeExample.WebUI.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("ilk log");
             return View();
         }
 

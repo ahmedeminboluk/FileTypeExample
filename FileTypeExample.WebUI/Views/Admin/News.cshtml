@@ -57,6 +57,7 @@
             </td>
             <td>
                 <a href="/Admin/NewsEdit?id=@item.Id" class="btn btn-warning">Düzenle</a>
+                @Html.ActionLink("Add-Mongo", "AddMongo", "Admin", new { title = item.Title, spot = item.Text, category = "Mahmure"}, new { @class = "btn btn-success" })
             </td>
         </tr>
 }
